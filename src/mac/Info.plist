@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>kazcoin</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kazcoin</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleShortVersionString</key>
+	<string>1.5.0</string>
+	<key>CFBundleVersion</key>
+	<string>1.5</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>CFBundleIconFile</key>
+	<string>Kazcoin.icns</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© Kazcoin</string>
+	<key>CFBundleSignature</key>
+	<string>DOGE</string>
+	<key>CFBundleExecutable</key>
+	<string>Kazcoin-Qt</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.kazcoin.wallet-qt</string>
+	<key>CFBundleName</key>
+	<string>Kazcoin-Qt</string>
+</dict>
+</plist>
