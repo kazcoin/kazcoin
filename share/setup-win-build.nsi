@@ -5,9 +5,9 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION "1.5.0.0"
-!define COMPANY "Kazcoin"
-!define URL http://kazcoin.com
+!define VERSION "0.8.6.2"
+!define COMPANY "Kazcoin Dev"
+!define URL http://kazcoins.org
 
 # MUI Symbol Definitions
 !define MUI_ICON "pixmaps\bitcoin.ico"
@@ -66,14 +66,7 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File ..\release\kazcoin-qt.exe
-    File ..\release\libgcc_s_dw2-1.dll
-    File ..\release\libstdc++-6.dll
-    File ..\release\mingwm10.dll
-    File ..\release\QtCore4.dll
-    File ..\release\QtGui4.dll
-    File ..\release\QtNetwork4.dll
-    File /oname=readme.txt ..\doc\README_windows.txt
+    File kazcoin-qt.exe
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 SectionEnd
@@ -84,7 +77,7 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Kazcoin.lnk" $INSTDIR\kazcoin-qt.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Kazcoin-wallet.lnk" $INSTDIR\kazcoin-qt.exe
     CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall Kazcoin.lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
@@ -117,21 +110,14 @@ done${UNSECTION_ID}:
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
     Delete /REBOOTOK $INSTDIR\kazcoin-qt.exe
-    Delete /REBOOTOK $INSTDIR\libgcc_s_dw2-1.dll
-    Delete /REBOOTOK $INSTDIR\libstdc++-6.dll
-    Delete /REBOOTOK $INSTDIR\mingwm10.dll
-    Delete /REBOOTOK $INSTDIR\QtCore4.dll
-    Delete /REBOOTOK $INSTDIR\QtGui4.dll
-    Delete /REBOOTOK $INSTDIR\QtNetwork4.dll
-    Delete /REBOOTOK $INSTDIR\readme.txt
     DeleteRegValue HKCU "${REGKEY}\Components" Main
 SectionEnd
 
 Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall Kazcoin.lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Kazcoin.lnk"
-    Delete /REBOOTOK "$SMSTARTUP\Kazcoin.lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Kazcoin-wallet.lnk"
+    Delete /REBOOTOK "$SMSTARTUP\Kazcoin-wallet.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
     Delete /REBOOTOK $INSTDIR\db.log
